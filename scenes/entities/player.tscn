@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://yagdhnvc6fp0"]
+[gd_scene load_steps=5 format=3 uid="uid://yagdhnvc6fp0"]
 
-[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_kngiu"]
+[ext_resource type="Script" uid="uid://bgo21nyirdi8k" path="res://scripts/entities/player.gd" id="1_kngiu"]
+[ext_resource type="PackedScene" uid="uid://dtuuqaka0udg8" path="res://scenes/objects/gun.tscn" id="2_08t41"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_84x45"]
 
@@ -18,3 +19,9 @@ shape = SubResource("CapsuleShape3D_ei0lw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.564943, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -20)
+
+[node name="Gun" parent="Camera3D" instance=ExtResource("2_08t41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.264739, -0.250073, -0.476437)

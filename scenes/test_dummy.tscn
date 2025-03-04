@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://74jmhwitd40w"]
+
+[ext_resource type="Script" uid="uid://bxod3bv2237lb" path="res://scripts/test_dummy.gd" id="1_vf2n8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kw2oe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1c1u5"]
+
+[node name="TestDummy" type="StaticBody3D"]
+script = ExtResource("1_vf2n8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_kw2oe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1c1u5")
