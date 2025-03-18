@@ -6,15 +6,9 @@ const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = 0.005
 var double_jumped: bool = false
 
-@onready var ray = $Camera3D/RayCast3D
-
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		shoot()
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -47,14 +41,3 @@ func _input(event):
 		rotation.y -= event.relative.x * mouse_sensitivity
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
-
-func shoot():
-	$Camera3D/Gun.shoot()
-	
-	var collider = ray.get_collider()
-	
-	if collider == null:
-		return
-	
-	if collider.has_method("take_damage"):
-		collider.take_damage()
