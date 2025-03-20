@@ -5,9 +5,12 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 var mouse_sensitivity = 0.005
 var double_jumped: bool = false
+var has_key = false
+#@onready var key_icon = get_node("/root/Main/Hud/KeyIcon")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#add_to_group("player")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -41,3 +44,6 @@ func _input(event):
 		rotation.y -= event.relative.x * mouse_sensitivity
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+
+func collect_key():
+	has_key = true
