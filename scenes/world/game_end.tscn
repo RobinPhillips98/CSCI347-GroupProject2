@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://do5ipvhoq3rpd"]
 
-[ext_resource type="Script" uid="uid://j7ux5y55oia8" path="res://scripts/game_end.gd" id="1_71rs3"]
+[ext_resource type="Script" uid="uid://j7ux5y55oia8" path="res://scripts/world/game_end.gd" id="1_71rs3"]
 [ext_resource type="PackedScene" uid="uid://baaq8ldqmo758" path="res://assets/misc/craft_speederA.glb" id="2_s7s1j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s7s1j"]
