@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Notroid"
-run/main_scene="uid://2yq0cwbfygut"
+run/main_scene="uid://dgb850qv2r0vt"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

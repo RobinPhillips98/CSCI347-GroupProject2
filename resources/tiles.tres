@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=411 format=4 uid="uid://d1s6180t03w3q"]
 
-[ext_resource type="Texture2D" uid="uid://cxrqfrjfs23qs" path="res://assets/tiles/space-station/Textures/colormap.png" id="1_4eb6g"]
+[ext_resource type="Texture2D" uid="uid://ppbhpw875vxt" path="res://assets/tiles/space-station/Textures/colormap.png" id="1_4eb6g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rhv1"]
 resource_name = "colormap"

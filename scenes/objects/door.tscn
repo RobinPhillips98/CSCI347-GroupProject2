@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvlwj0j702080"]
+
+[ext_resource type="Script" uid="uid://dok7d1r7a0udm" path="res://scripts/objects/door.gd" id="1_hpvv5"]
+[ext_resource type="Texture2D" uid="uid://ie8763qnom7d" path="res://assets/misc/door-2.png" id="2_uvdjg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvdjg"]
+albedo_texture = ExtResource("2_uvdjg")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_83dcw"]
+material = SubResource("StandardMaterial3D_uvdjg")
+size = Vector3(3, 3, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uvdjg"]
+points = PackedVector3Array(1.5, 1.5, 0.125, 1.5, 1.5, -0.125, -1.5, 1.5, 0.125, 1.5, -1.5, 0.125, 1.5, -1.5, -0.125, -1.5, 1.5, -0.125, -1.5, -1.5, 0.125, -1.5, -1.5, -0.125)
+
+[sub_resource type="Animation" id="Animation_83dcw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uvdjg"]
+resource_name = "door_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.999003),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5, 0), Vector3(0, -1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83dcw"]
+_data = {
+&"RESET": SubResource("Animation_83dcw"),
+&"door_animation": SubResource("Animation_uvdjg")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uvdjg"]
+size = Vector3(1.87598, 2.81262, 2.13574)
+
+[node name="Door" type="StaticBody3D"]
+script = ExtResource("1_hpvv5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_83dcw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("ConvexPolygonShape3D_uvdjg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_83dcw")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100098, 1.53524, 0.941438)
+shape = SubResource("BoxShape3D_uvdjg")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

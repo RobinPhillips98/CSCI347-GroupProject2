@@ -1,16 +1,14 @@
 extends CharacterBody3D
 
 #Movement related
-const SPEED = 5.0
+const SPEED = 6.5
 const JUMP_VELOCITY = 4.5
-var mouse_sensitivity = 0.005
+var mouse_sensitivity = 0.0025
 var double_jumped: bool = false
 var has_key = false
-#@onready var key_icon = get_node("/root/Main/Hud/KeyIcon")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	#add_to_group("player")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -47,3 +45,6 @@ func _input(event):
 
 func collect_key():
 	has_key = true
+
+func display_message(message, time):
+	$Hud.display_message(message, time)
