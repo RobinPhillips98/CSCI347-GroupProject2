@@ -11,7 +11,7 @@ extends Node3D
 
 func _on_space_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		get_tree().reload_current_scene()
+		get_tree().quit()
 
 
 func _on_lights_timer_timeout() -> void:

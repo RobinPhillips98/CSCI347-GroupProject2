@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk135hhq1vlhl"]
+
+[ext_resource type="Script" uid="uid://ca2xmbhcwxh7h" path="res://scripts/user-interface/hud.gd" id="1_x5r8c"]
+[ext_resource type="Texture2D" uid="uid://ceqnc0fe6nc34" path="res://assets/misc/HUD.PNG" id="2_823oe"]
+
+[node name="Hud" type="Node2D"]
+script = ExtResource("1_x5r8c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Visor" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(961, 535.5)
+scale = Vector2(1.00104, 0.986111)
+texture = ExtResource("2_823oe")
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 798.0
+offset_top = 36.0
+offset_right = 1123.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 100
+text = "240"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageDisplay" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -403.0
+offset_top = -178.5
+offset_right = 403.0
+offset_bottom = 178.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "The station's reactor core is melting down!
+
+I have to escape!
+
+KEEP MOVING UP!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_823oe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(964, 537)
+scale = Vector2(0.5, 0.5)
+
+[node name="Start" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 240.0
+
+[connection signal="timeout" from="Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
