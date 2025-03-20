@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://do5ipvhoq3rpd"]
+
+[ext_resource type="Script" uid="uid://j7ux5y55oia8" path="res://scripts/game_end.gd" id="1_71rs3"]
+[ext_resource type="PackedScene" uid="uid://baaq8ldqmo758" path="res://assets/craft_speederA.glb" id="2_s7s1j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7s1j"]
+size = Vector3(15, 10, 12)
+
+[node name="GameEnd" type="Area3D"]
+script = ExtResource("1_71rs3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 6, -2)
+shape = SubResource("BoxShape3D_s7s1j")
+
+[node name="craft_speederA2" parent="." instance=ExtResource("2_s7s1j")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10, 0, -8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
