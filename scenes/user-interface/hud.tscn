@@ -8,12 +8,6 @@ script = ExtResource("1_x5r8c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Visor" type="Sprite2D" parent="CanvasLayer"]
-visible = false
-position = Vector2(961, 535.5)
-scale = Vector2(1.00104, 0.986111)
-texture = ExtResource("2_823oe")
-
 [node name="CountdownLabel" type="Label" parent="CanvasLayer"]
 visible = false
 offset_left = 798.0
@@ -21,7 +15,7 @@ offset_top = 36.0
 offset_right = 1123.0
 offset_bottom = 173.0
 theme_override_font_sizes/font_size = 100
-text = "240"
+text = "3:00.00"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -30,3 +30,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	else:
 		if body.has_method("display_message"):
 			body.display_message("The door's locked! The key is in the room I passed below!", 2)
+			message_seen = true
